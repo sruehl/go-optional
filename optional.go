@@ -19,7 +19,9 @@ func Of[T any](value T) Optional[T] {
 	return Optional[T]{valueKey: value}
 }
 
-// OfPtr takes a pointer and stores the value
+// OfPtr takes a pointer and stores the value.
+// This is useful when a "vanilla optional aka. using a pointer for that" is used as an optional.
+// For regular pointers Of is safe to use.
 func OfPtr[T any](ptr *T) Optional[T] {
 	if ptr == nil {
 		return Empty[T]()
