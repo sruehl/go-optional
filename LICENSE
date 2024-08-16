@@ -1,6 +1,10 @@
+Copyright for portions of project Foo are held by [Leigh McCulloch, 2017] as
+part of project github.com/leighmcculloch/go-optional. All other copyright for
+project Foo are held by [Sebastian Rühl, 2024].
+
 MIT License
 
-Copyright (c) 2017 Leigh McCulloch
+Copyright (c) 2024 Sebastian Rühl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

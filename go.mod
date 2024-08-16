@@ -1,3 +1,3 @@
-module 4d63.com/optional
+module github.com/sruehl/go-optional
 
-go 1.18
+go 1.22

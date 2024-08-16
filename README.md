@@ -1,15 +1,14 @@
 # optional
 
-[![Go Report Card](https://goreportcard.com/badge/4d63.com/optional)](https://goreportcard.com/report/4d63.com/optional)
-[![Build Status](https://img.shields.io/travis/leighmcculloch/go-optional.svg)](https://travis-ci.org/leighmcculloch/go-optional)
-[![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/4d63.com/optional)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sruehl/go-optional)](https://goreportcard.com/report/github.com/sruehl/go-optional)
+[![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/sruehl/go-optional)
 
 ```
-go get 4d63.com/optional
+go get github.com/sruehl/go-optional
 ```
 
 ```
-import 4d63.com/optional
+import github.com/sruehl/go-optional
 ```
 
 Package optional exports an Optional[T] type that can wrap any type to represent
@@ -71,4 +70,4 @@ when the optional is empty:
 
 ### Documentation
 
-See the [godoc](https://godoc.org/4d63.com/optional).
+See the [godoc](https://godoc.org/github.com/sruehl/go-optional).
