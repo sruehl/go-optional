@@ -1,6 +1,7 @@
 # optional
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/sruehl/go-optional)](https://goreportcard.com/report/github.com/sruehl/go-optional)
+![Build](https://github.com/sruehl/go-optional/actions/workflows/go.yml/badge.svg)
 [![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/sruehl/go-optional)
 
 ```
