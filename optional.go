@@ -75,21 +75,30 @@ func (o Optional[T]) ElseZero() (value T) {
 	return o.Else(zero)
 }
 
-// String returns the string representation of the wrapped value, or the string
-// representation of the zero value of the type wrapped if there is no value
-// wrapped by this optional.
+// String returns the string representation of the wrapped value, or an empty string
+// if there is no value wrapped by this optional.
 func (o Optional[T]) String() string {
-	return fmt.Sprintf("%v", o.ElseZero())
+	if v, ok := o.Get(); ok {
+		return fmt.Sprintf("%v", v)
+	}
+	return ""
 }
 
 // MarshalJSON marshals the value being wrapped to JSON. If there is no vale
 // being wrapped, the zero value of its type is marshaled.
 func (o Optional[T]) MarshalJSON() (data []byte, err error) {
-	return json.Marshal(o.ElseZero())
+	if v, ok := o.Get(); ok {
+		return json.Marshal(v)
+	}
+	return []byte("null"), nil
 }
 
 // UnmarshalJSON unmarshals the JSON into a value wrapped by this optional.
 func (o *Optional[T]) UnmarshalJSON(data []byte) error {
+	if string(data) == "null" {
+		*o = Empty[T]()
+		return nil
+	}
 	var v T
 	err := json.Unmarshal(data, &v)
 	if err != nil {
@@ -102,7 +111,10 @@ func (o *Optional[T]) UnmarshalJSON(data []byte) error {
 // MarshalXML marshals the value being wrapped to XML. If there is no vale
 // being wrapped, the zero value of its type is marshaled.
 func (o Optional[T]) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	return e.EncodeElement(o.ElseZero(), start)
+	if v, ok := o.Get(); ok {
+		return e.EncodeElement(v, start)
+	}
+	return e.EncodeElement("", start)
 }
 
 // UnmarshalXML unmarshals the XML into a value wrapped by this optional.
