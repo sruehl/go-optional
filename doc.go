@@ -1,7 +1,12 @@
 /*
-Package optional exports an Optional[T] type that can wrap any type to represent the lack of value. The types guarantee safety by requiring the developer to unwrap them to get to the inner value. This prevents a nil value being operated on. Optionals marshal to XML and JSON like their underlying type, and omitempty works just like their wrapped type would with a pointer, but without the use of pointers.
+Package optional exports an Optional[T] type that can wrap any type to represent the lack of value. The types guarantee
+safety by requiring the developer to unwrap them to get to the inner value. This prevents a nil value being operated on.
+Optionals marshal to XML and JSON like their underlying type, and omitempty works just like their wrapped type would with
+a pointer, but without the use of pointers.
 
-These types are an alternative to using pointers, zero values, or similar null wrapper packages. Unlike similar solutions these will omit correctly from XML and JSON without the use of pointers and the compiler will ensure their value is not used when empty.
+These types are an alternative to using pointers, zero values, or similar null wrapper packages. Unlike similar solutions
+these will omit correctly from XML and JSON without the use of pointers and the compiler will ensure their value is not
+used when empty.
 
 # Examples
 
@@ -29,7 +34,7 @@ Unwrap it safely:
 		// ok is true if o is not empty
 	}
 
-Or get it's value with a fallback to a default:
+Or get its value with a fallback to a default:
 
 	_ := o.ElseZero() // returns the zero value if empty
 
