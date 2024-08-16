@@ -217,3 +217,50 @@ func TestUnmarshalNullValuesToEmpty(t *testing.T) {
 	failIfPresent(s.Uint64.IsPresent)
 	failIfPresent(s.Uintptr.IsPresent)
 }
+
+type A struct {
+	*B
+}
+
+type B struct {
+	C
+}
+
+type C struct {
+	bool
+}
+
+func TestPointerPreserving(t *testing.T) {
+	t.Run("Same pointer", func(t *testing.T) {
+		a := &A{B: &B{C: C{true}}}
+		oa := Of(a)
+		aoo, ok := oa.Get()
+		if !ok {
+			t.Errorf("Get() did not return something")
+			t.Fail()
+		}
+		if aoo != a {
+			t.Errorf("Get() did not return the same pointer on A")
+			t.Fail()
+		}
+		if aoo.B != a.B {
+			t.Errorf("Get() did not return the same pointer on B")
+		}
+		if aoo.B.C != a.B.C {
+			t.Errorf("Get() did not return the same C")
+		}
+	})
+	t.Run("Different pointer", func(t *testing.T) {
+		a := &A{B: &B{C: C{}}}
+		oa := OfPtr(a)
+		aoo, ok := oa.Get()
+		if !ok {
+			t.Errorf("Get() did not return something")
+			t.Fail()
+		}
+		if &aoo == a {
+			t.Errorf("Get() did not return a different pointer")
+			t.Fail()
+		}
+	})
+}

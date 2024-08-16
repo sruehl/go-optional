@@ -19,6 +19,7 @@ func Of[T any](value T) Optional[T] {
 	return Optional[T]{valueKey: value}
 }
 
+// OfPtr takes a pointer and stores the value
 func OfPtr[T any](ptr *T) Optional[T] {
 	if ptr == nil {
 		return Empty[T]()
